@@ -20,16 +20,16 @@ x-env-defaults: &env-defaults
 services:
   # ---------- Storage & Data Layers ----------
   minio:
-    image: minio/minio:latest
+    image: bitnami/minio:latest
     environment:
-      <<: *env-defaults
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
-    command: server /data
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+      - MINIO_DEFAULT_BUCKETS=my-bucket
     volumes:
       - minio-data:/data
     ports:
       - "9000:9000"
+      - "9001:9001"
 
   postgres:
     image: pgvector/pgvector:pg17

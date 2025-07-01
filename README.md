@@ -9,7 +9,6 @@
 ## 🌐 Service URLs (Default)
 
 - MinIO: [http://localhost:9000](http://localhost:9000)
-- GPT4All: [http://localhost:7860](http://localhost:7860)
 - SuperAGI: [http://localhost:8000](http://localhost:8000)
 - Haystack: [http://localhost:8001](http://localhost:8001)
 - n8n: [http://localhost:5678](http://localhost:5678)
@@ -36,15 +35,19 @@ Below are the default connection details for each core service. Adjust as needed
 - **Example connection string:**
   - `postgresql://postgres:postgres@localhost:5432/vector_db`
 
-### MinIO
+### MinIO (Bitnami)
 - **Endpoint:** `http://localhost:9000`
 - **Root User:** `minioadmin`
 - **Root Password:** `minioadmin`
+- **Default buckets:** `my-bucket` (auto-created on first run, change via `MINIO_DEFAULT_BUCKETS`)
+- **Image:** `bitnami/minio:latest`
 - **Example config:**
   - Host: `localhost:9000`
   - Access Key: `minioadmin`
   - Secret Key: `minioadmin`
-  - Bucket: *(create as needed)*
+  - Bucket: `my-bucket` (or any you create)
+- **Environment variables:**
+  - `MINIO_ROOT_USER`, `MINIO_ROOT_PASSWORD`, `MINIO_DEFAULT_BUCKETS`
 
 ### Redis
 - **Host:** `localhost`
@@ -63,14 +66,13 @@ Below are the default connection details for each core service. Adjust as needed
 
 ---
 
-This repository provides a one-stop Docker Compose setup for local AI Agent development on macOS (M1/ARM64). All core components—model servers, vector stores, databases, caches, and orchestration frameworks—are containerized and wired together. Tweak a few top-level environment variables, then spin up/down with a single command.
+This repository provides a one-stop Docker Compose setup for local AI Agent development on macOS (M1/ARM64). All core components—vector stores, databases, caches, and orchestration frameworks—are containerized and wired together. Tweak a few top-level environment variables, then spin up/down with a single command.
 
 ---
 
 ## 🚀 Project Overview
 
-- **Model Servers**: GPT4All for local LLM inference (via REST/Gradio)
-- **Vector Stores**: Qdrant + PostgreSQL (pgvector extension)
+- **Vector Stores**: Qdrant + PostgreSQL (pgvector extension)
 - **Databases & Caches**: Redis (session/state), MinIO (S3-like object store)
 - **Agent Frameworks**: SuperAGI, Haystack
 - **Workflow Automation**: n8n (with persistent storage, PostgreSQL backend)
@@ -93,11 +95,10 @@ Ensure Docker is running before proceeding.
 
 | Service               | Image                                  | Port | Description                                   |
 | --------------------- | -------------------------------------- | ---- | --------------------------------------------- |
-| MinIO                 | `minio/minio:latest`                   | 9000 | S3-compatible object storage                  |
+| MinIO                 | `bitnami/minio:latest`                | 9000 | S3-compatible object storage                  |
 | PostgreSQL + pgvector | `ankane/pgvector:postgres`             | 5432 | Relational DB with embedding support          |
 | Qdrant                | `qdrant/qdrant:latest`                 | 6333 | Vector search engine (API key enforced)       |
 | Redis                 | `redis:7-alpine`                       | 6379 | In-memory cache/pub-sub for sessions/workflow |
-| GPT4All               | `nomic-ai/gpt4all:latest`              | 7860 | Local LLM inference with Gradio UI            |
 | SuperAGI              | `superagi/superagi:latest`             | 8000 | Agent orchestration with prompt chaining      |
 | Haystack              | `deepset/haystack:latest`              | 8001 | Retrieval+generation pipelines                |
 
@@ -145,7 +146,7 @@ OPENAI_API_KEY=your_openai_key_here
 3. **Access UIs**:
 
    - MinIO: [http://localhost:9000](http://localhost:9000)
-   - GPT4All: [http://localhost:7860](http://localhost:7860)
+
    - SuperAGI: [http://localhost:8000](http://localhost:8000)
    - Haystack: [http://localhost:8001](http://localhost:8001)
 
@@ -171,7 +172,7 @@ OPENAI_API_KEY=your_openai_key_here
 
 ```
 ├── agent/                  # (Optional) custom agent code + Dockerfile
-├── models/                 # (Optional) mount directory for GPT4All files
+
 ├── .env                    # Your local overrides (ignored by default)
 └── docker-compose.yml      # This orchestration setup
 ```
