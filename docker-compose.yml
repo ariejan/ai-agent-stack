@@ -37,7 +37,6 @@ services:
       <<: *env-defaults
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ./config/postgres/init-superagi-db.sh:/docker-entrypoint-initdb.d/init-superagi-db.sh
     ports:
       - "5432:5432"
 
