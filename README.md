@@ -9,7 +9,6 @@
 ## 🌐 Service URLs (Default)
 
 - MinIO: [http://localhost:9000](http://localhost:9000)
-- SuperAGI: [http://localhost:8000](http://localhost:8000)
 - Haystack: [http://localhost:8001](http://localhost:8001)
 - n8n: [http://localhost:5678](http://localhost:5678)
 
@@ -74,7 +73,6 @@ This repository provides a one-stop Docker Compose setup for local AI Agent deve
 
 - **Vector Stores**: Qdrant + PostgreSQL (pgvector extension)
 - **Databases & Caches**: Redis (session/state), MinIO (S3-like object store)
-- **Agent Frameworks**: SuperAGI, Haystack
 - **Workflow Automation**: n8n (with persistent storage, PostgreSQL backend)
 
 All services expose HTTP endpoints on localhost, isolating dependencies and ensuring reproducible setups across your team.
@@ -99,9 +97,8 @@ Ensure Docker is running before proceeding.
 | PostgreSQL + pgvector | `ankane/pgvector:postgres`             | 5432 | Relational DB with embedding support          |
 | Qdrant                | `qdrant/qdrant:latest`                 | 6333 | Vector search engine (API key enforced)       |
 | Redis                 | `redis:7-alpine`                       | 6379 | In-memory cache/pub-sub for sessions/workflow |
-| SuperAGI              | `superagi/superagi:latest`             | 8000 | Agent orchestration with prompt chaining      |
 | Haystack              | `deepset/haystack:latest`              | 8001 | Retrieval+generation pipelines                |
-
+| n8n                   | `n8n/n8n:latest`                       | 5678 | Workflow automation                           |
 
 ---
 
