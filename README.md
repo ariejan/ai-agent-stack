@@ -1,5 +1,54 @@
 # AI Agent Dev Environment
 
+## 🌐 Service URLs (Default)
+
+- MinIO: [http://localhost:9000](http://localhost:9000)
+- GPT4All: [http://localhost:7860](http://localhost:7860)
+- SuperAGI: [http://localhost:8000](http://localhost:8000)
+- Haystack: [http://localhost:8001](http://localhost:8001)
+
+---
+
+## 🔑 Connection Info for Tools
+
+Below are the default connection details for each core service. Adjust as needed in your `.env` file.
+
+### PostgreSQL (pgvector)
+- **Host:** `localhost`
+- **Port:** `5432`
+- **Username:** `postgres`
+- **Password:** `postgres`
+- **Database:** `vector_db`
+- **Example connection string:**
+  - `postgresql://postgres:postgres@localhost:5432/vector_db`
+
+### MinIO
+- **Endpoint:** `http://localhost:9000`
+- **Root User:** `minioadmin`
+- **Root Password:** `minioadmin`
+- **Example config:**
+  - Host: `localhost:9000`
+  - Access Key: `minioadmin`
+  - Secret Key: `minioadmin`
+  - Bucket: *(create as needed)*
+
+### Redis
+- **Host:** `localhost`
+- **Port:** `6379`
+- **Password:** `redispassword`
+- **Example connection string:**
+  - `redis://:redispassword@localhost:6379/0`
+
+### Qdrant
+- **Host:** `localhost`
+- **Port:** `6333`
+- **API Key:** `changeme`
+- **Example connection:**
+  - URL: `http://localhost:6333`
+  - Header: `api-key: changeme`
+
+---
+
 This repository provides a one-stop Docker Compose setup for local AI Agent development on macOS (M1/ARM64). All core components—model servers, vector stores, databases, caches, and orchestration frameworks—are containerized and wired together. Tweak a few top-level environment variables, then spin up/down with a single command.
 
 ---
