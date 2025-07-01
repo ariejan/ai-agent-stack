@@ -1,5 +1,11 @@
 # AI Agent Dev Environment
 
+![Validate Docker Compose](https://github.com/ariejan/ai-agent-stack/actions/workflows/validate-docker-compose.yml/badge.svg)
+![MIT License](https://img.shields.io/github/license/ariejan/ai-agent-stack)
+![Docker](https://img.shields.io/badge/docker-ready-blue?logo=docker)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/ariejan/ai-agent-stack)
+
 ## 🌐 Service URLs (Default)
 
 - MinIO: [http://localhost:9000](http://localhost:9000)
