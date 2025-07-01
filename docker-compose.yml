@@ -88,9 +88,29 @@ services:
       - "8001:8001"
 
 
+  n8n:
+    image: n8nio/n8n:latest
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DB}
+      - DB_POSTGRESDB_USER=${POSTGRES_USER}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+      - N8N_BASIC_AUTH_ACTIVE=false
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n-data:/home/node/.n8n
+    depends_on:
+      - postgres
+
 # ---------- Volumes ----------
 volumes:
   minio-data:
   postgres-data:
   qdrant-data:
   redis-data:
+  n8n-data:

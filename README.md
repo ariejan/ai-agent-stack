@@ -12,12 +12,20 @@
 - GPT4All: [http://localhost:7860](http://localhost:7860)
 - SuperAGI: [http://localhost:8000](http://localhost:8000)
 - Haystack: [http://localhost:8001](http://localhost:8001)
+- n8n: [http://localhost:5678](http://localhost:5678)
 
 ---
 
 ## 🔑 Connection Info for Tools
 
 Below are the default connection details for each core service. Adjust as needed in your `.env` file.
+
+### n8n
+- **Host:** `localhost`
+- **Port:** `5678`
+- **Database:** PostgreSQL (shared with other services)
+- **Example connection string:**
+  - Web UI: [http://localhost:5678](http://localhost:5678)
 
 ### PostgreSQL (pgvector)
 - **Host:** `localhost`
@@ -64,7 +72,8 @@ This repository provides a one-stop Docker Compose setup for local AI Agent deve
 - **Model Servers**: GPT4All for local LLM inference (via REST/Gradio)
 - **Vector Stores**: Qdrant + PostgreSQL (pgvector extension)
 - **Databases & Caches**: Redis (session/state), MinIO (S3-like object store)
-- **Agent Frameworks**: SuperAGI, Haystack, and a custom LangChain agent
+- **Agent Frameworks**: SuperAGI, Haystack
+- **Workflow Automation**: n8n (with persistent storage, PostgreSQL backend)
 
 All services expose HTTP endpoints on localhost, isolating dependencies and ensuring reproducible setups across your team.
 
