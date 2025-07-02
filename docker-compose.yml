@@ -59,20 +59,6 @@ services:
     ports:
       - "6379:6379"
 
-  # ---------- Agent / Orchestration Frameworks ----------
-  haystack:
-    image: deepset/haystack:base-v2.15.1
-    environment:
-      <<: *env-defaults
-      # Haystack config
-      DB_CONN: "postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}"
-      QDRANT_HOST: "qdrant"
-      QDRANT_PORT: "6333"
-      REDIS_HOST: "redis"
-      REDIS_PORT: "6379"
-    ports:
-      - "8001:8001"
-
   n8n:
     image: n8nio/n8n:latest
     environment:

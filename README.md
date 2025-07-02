@@ -9,7 +9,6 @@
 ## 🌐 Service URLs (Default)
 
 - MinIO: [http://localhost:9000](http://localhost:9000)
-- Haystack: [http://localhost:8001](http://localhost:8001)
 - n8n: [http://localhost:5678](http://localhost:5678)
 
 ---
@@ -26,13 +25,13 @@ Below are the default connection details for each core service. Adjust as needed
   - Web UI: [http://localhost:5678](http://localhost:5678)
 
 ### PostgreSQL (pgvector)
-- **Host:** `localhost`
+- **Credential:** `Postgres`
+- **Host:** `postgres`
 - **Port:** `5432`
 - **Username:** `postgres`
 - **Password:** `postgres`
 - **Database:** `vector_db`
-- **Example connection string:**
-  - `postgresql://postgres:postgres@localhost:5432/vector_db`
+
 
 ### MinIO (Bitnami)
 - **Endpoint:** `http://localhost:9000`
@@ -49,19 +48,17 @@ Below are the default connection details for each core service. Adjust as needed
   - `MINIO_ROOT_USER`, `MINIO_ROOT_PASSWORD`, `MINIO_DEFAULT_BUCKETS`
 
 ### Redis
-- **Host:** `localhost`
-- **Port:** `6379`
+- **Credential:** `Redis`
 - **Password:** `redispassword`
-- **Example connection string:**
-  - `redis://:redispassword@localhost:6379/0`
+- **User:** `<empty>`
+- **Host:** `redis`
+- **Port:** `6379`
+- **Database Number:** `0`
 
 ### Qdrant
-- **Host:** `localhost`
-- **Port:** `6333`
+- **Credential:** `QdrantApi`
+- **Qdrant URL:** `http://localhost:6333`
 - **API Key:** `changeme`
-- **Example connection:**
-  - URL: `http://localhost:6333`
-  - Header: `api-key: changeme`
 
 ---
 
@@ -97,7 +94,6 @@ Ensure Docker is running before proceeding.
 | PostgreSQL + pgvector | `ankane/pgvector:postgres`             | 5432 | Relational DB with embedding support          |
 | Qdrant                | `qdrant/qdrant:latest`                 | 6333 | Vector search engine (API key enforced)       |
 | Redis                 | `redis:7-alpine`                       | 6379 | In-memory cache/pub-sub for sessions/workflow |
-| Haystack              | `deepset/haystack:latest`              | 8001 | Retrieval+generation pipelines                |
 | n8n                   | `n8n/n8n:latest`                       | 5678 | Workflow automation                           |
 
 ---
@@ -143,9 +139,7 @@ OPENAI_API_KEY=your_openai_key_here
 3. **Access UIs**:
 
    - MinIO: [http://localhost:9000](http://localhost:9000)
-
-   - SuperAGI: [http://localhost:8000](http://localhost:8000)
-   - Haystack: [http://localhost:8001](http://localhost:8001)
+   - n8n: [http://localhost:5678](http://localhost:5678)
 
 
 4. **Stop & remove**:
