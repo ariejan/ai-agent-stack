@@ -34,18 +34,15 @@ Below are the default connection details for each core service. Adjust as needed
 
 
 ### MinIO (Bitnami)
+- **Credential:** `S3 Account`
 - **Endpoint:** `http://localhost:9000`
-- **Root User:** `minioadmin`
-- **Root Password:** `minioadmin`
+- **Region:** Does not matter
+- **Access Key ID:** `minioadmin`
+- **Secret Access Key:** `minioadmin`
+- **Force Path Style:** `true`
+- **Ignore SSL Issues (insecure):** `true`
 - **Default buckets:** `my-bucket` (auto-created on first run, change via `MINIO_DEFAULT_BUCKETS`)
-- **Image:** `bitnami/minio:latest`
-- **Example config:**
-  - Host: `localhost:9000`
-  - Access Key: `minioadmin`
-  - Secret Key: `minioadmin`
-  - Bucket: `my-bucket` (or any you create)
-- **Environment variables:**
-  - `MINIO_ROOT_USER`, `MINIO_ROOT_PASSWORD`, `MINIO_DEFAULT_BUCKETS`
+
 
 ### Redis
 - **Credential:** `Redis`
